@@ -1,0 +1,4 @@
+Save  Сохранить
+Remove  Удалить
+Cancel  Закрыть
+Create  Создать

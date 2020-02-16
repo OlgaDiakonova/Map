@@ -1,9 +1,10 @@
 
+import java.io.IOException;
 import java.util.Map;
 
 public class TestMap {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
 
         ServiceClass srv = new ServiceClass();
         Dictionary diction = srv.init();

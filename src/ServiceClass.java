@@ -1,16 +1,33 @@
 
+import com.sun.org.apache.xerces.internal.impl.io.UTF8Reader;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 public class ServiceClass {
 
-    public Dictionary init(){
+    public Dictionary init() throws IOException {
         Dictionary diction = new Dictionary();
-        diction.pair.put("Save", "Сохранить");
-        diction.pair.put("Remove", "Удалить");
-        diction.pair.put("Cancel", "Закрыть");
-        diction.pair.put("Create", "Создать");
+
+        try(BufferedReader reader =
+                    new BufferedReader(new FileReader("C:\\Users\\admin\\eclipse-workspace\\Map\\src\\MapFile.txt"))){
+            String line;
+            while((line = reader.readLine()) != null){
+                String[] keyValue = line.split("  ");
+                diction.pair.put(keyValue[0], keyValue[1]);
+            }
+        }
+//        diction.pair.put("Save", "Сохранить");
+//        diction.pair.put("Remove", "Удалить");
+//        diction.pair.put("Cancel", "Закрыть");
+//        diction.pair.put("Create", "Создать");
 
         return diction;
 
